@@ -1,13 +1,15 @@
-#DataTable
-
+# DataTable
 React sortable table with filters
 
-###How to run? 
+### How to run? 
 npm install 
 npm run
 
+#### used 
+a webpack-react-redux  boilerplate https://github.com/jpsierens/webpack-react-redux
 
-###todo 
+
+### todo 
  - fix re-render after sort
- - add filter
- - subscribe to sreem
+ - add filters
+ - subscribe to streem
