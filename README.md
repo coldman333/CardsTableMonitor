@@ -3,7 +3,7 @@ React sortable table with filters
 
 ### How to run? 
 npm install 
-npm run
+npm start
 
 #### used 
 a webpack-react-redux  boilerplate https://github.com/jpsierens/webpack-react-redux
