@@ -1,36 +1,38 @@
 import { Observable } from 'rxjs/Observable';
 import Rx from 'rxjs/Rx';
 
-const createAsset = (assetId, assetType) => ({
+const COUNT = 150;
+
+const createAsset = (assetId) => ({
     id: assetId,
-    assetName: assetType === 'Stock' ? ['AAPL', 'GOOGL', 'FB', 'TSLA', 'MSFT'][Math.floor(Math.random() * 4)] : ['EUR', 'USD', 'GBP', 'NIS', 'AUD'][Math.floor(Math.random() * 4)],
-    price: Math.random() * 10,
-    lastUpdate: Date.now(),
-    type: assetType,
+    type: ['Poker', 'Solitaire', 'Shuffling', 'Deal', 'BloodWars'][Math.floor(Math.random() * 4)],
+    name: `Table ${assetId}`,
+    warning: false,
+    players: Math.floor(Math.random() * 5),
+    maxPlayers: Math.floor((Math.random() * 10)) + 5,
 });
 
 const getAllAssets = (n) => {
     const result = [];
     for (let i = 0; i < n; i++) {
-        result.push(createAsset(i, 'Stock'));
-        result.push(createAsset(i + n, 'Currency'));
+        result.push(createAsset(i));
     }
     return result;
 };
 
-export const assets = getAllAssets(200);
+export const assets = getAllAssets(COUNT);
 
-const timeObservable = Rx.Observable.interval(1000);
+const timeObservable = Rx.Observable.interval(500);
+
 export const mock = Observable.create((ob) => {
     timeObservable.subscribe(() => {
-        Rx.Observable.from(assets)
-      .map((val) => {
-          const random = Math.random();
-          val.price = random >= 0.5 ? val.price + random : val.price - random;
-          val.lastUpdate = Date.now();
-          return val;
-      })
-      .subscribe(val => ob.next(val));
+        const random = Math.floor( Math.random() * assets.length);
+        const val  = assets[random];
+        // val.warning = !val.warning ? [true, false][Math.floor(Math.random() * 2)] : val.warning;
+        val.warning = [true, false][Math.floor(Math.random() * 2)] ;
+        val.players = Math.floor(Math.random() * val.maxPlayers);
+        assets[random] = val;
+        Rx.Observable.from([{...val}]).subscribe(value => ob.next(value));
     });
     return () => null; // we don't care about unsubscribe just for a test
 });

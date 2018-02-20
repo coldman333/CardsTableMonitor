@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import DataTable from './components/DataTable/DataTable';
+import CardsTables from './components/CardsTables/CardsTables';
 
 export default (
 	<Switch>
-		<Route exact path="/" component={DataTable} />
+		<Route exact path="/" component={CardsTables} />
 	</Switch>
 );

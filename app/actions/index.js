@@ -7,18 +7,16 @@ export function filterTable(filter) {
     };
 }
 
-export function sortBy(by) {
-    console.log('sort by ' + by);
+export function mockUpdate(items) {
     return {
-        type: 'SORT_BY',
-        by
+        type: types.MOCK_UPDATE_ITEMS,
+        items
     };
 }
 
-// export function updateItems(by) {
-//     console.log('sort by ' + by);
-//     return {
-//         type: 'SORT_BY',
-//         by
-//     };
-// }
+export function fixWarning(itemId) {
+    return {
+        type: types.FIX_WARNING,
+        itemId
+    };
+}

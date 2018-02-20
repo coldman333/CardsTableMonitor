@@ -79,12 +79,26 @@ module.exports = {
         }, {
             test: /\.json?$/,
             loader: 'json'
-        }, {
-            test: /\.scss$/,
-            // we extract the styles into their own .css file instead of having
-            // them inside the js.
-            loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[name]---[local]---[hash:base64:5]!sass')
-        }, {
+        },
+        //   {
+        //     test: /\.scss$/,
+        //     // we extract the styles into their own .css file instead of having
+        //     // them inside the js.
+        //     loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[name]!sass')
+        // },
+          ,
+          {
+            test: /\.(less|css)$/,
+            loaders: [ ExtractTextPlugin.extract(
+              [
+                {loader: 'css', options: {sourceMap: true} },
+                {loader: 'postcss', options: {sourceMap: true}},
+                {loader: 'less', options: {sourceMap: true}}
+              ]
+            )
+            ]
+          },
+          {
             test: /\.woff(2)?(\?[a-z0-9#=&.]+)?$/,
             loader: 'url?limit=10000&mimetype=application/font-woff'
         }, {
