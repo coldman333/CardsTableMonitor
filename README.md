@@ -5,14 +5,14 @@
 * blink red - table with warning
 
 ### How to run? 
-npm install 
-npm start
+ - npm install 
+ - npm start
 
-#### used 
+#### Used 
 a webpack-react-redux (fixed) boilerplate https://github.com/jpsierens/webpack-react-redux
 
 
-### todo 
+### // Todo 
  - switch  list/cards
  - add desc filters all/only errors/only active/ only empty
  - write tests
