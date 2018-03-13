@@ -2,6 +2,7 @@ import { Observable } from 'rxjs/Observable';
 import Rx from 'rxjs/Rx';
 
 const COUNT = 150;
+const TIMEOUT = 1000;
 
 const createAsset = (assetId) => ({
     id: assetId,
@@ -22,7 +23,7 @@ const getAllAssets = (n) => {
 
 export const assets = getAllAssets(COUNT);
 
-const timeObservable = Rx.Observable.interval(500);
+const timeObservable = Rx.Observable.interval(TIMEOUT);
 
 export const mock = Observable.create((ob) => {
     timeObservable.subscribe(() => {

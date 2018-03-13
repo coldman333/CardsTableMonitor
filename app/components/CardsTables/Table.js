@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-// import LogoImg from 'YOUR_PATH/logo.png';
+
 
 export default function Table({
     id, name, type, players, maxPlayers, warning, onClick, src}) {

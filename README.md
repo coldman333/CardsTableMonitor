@@ -9,7 +9,7 @@
  - npm start
 
 #### Used 
-a webpack-react-redux (fixed) boilerplate https://github.com/jpsierens/webpack-react-redux
+a webpack-react-redux (updated) boilerplate https://github.com/jpsierens/webpack-react-redux
 
 
 ### // Todo 
